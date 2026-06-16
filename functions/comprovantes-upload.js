@@ -27,7 +27,24 @@ exports.handler = async (event) => {
   }
   let body = {};
   try {
-    body = event.body ? JSON.parse(event.body) : {};
+    const contentType = event.headers?.["content-type"] || "";
+    if (contentType.includes("application/json")) {
+      body = event.body ? JSON.parse(event.body) : {};
+    } else {
+      // FormData — extrai campos do multipart manualmente
+      const raw = event.body || "";
+      const getField = (name) => {
+        const re = new RegExp(`name="${name}"\\r?\\n\\r?\\n([^\\r\\n-]+)`);
+        const m = raw.match(re);
+        return m ? m[1].trim() : null;
+      };
+      body = {
+        transaction_id: getField("transaction_id"),
+        cpf:            getField("customer_cpf"),
+        nome:           getField("customer_name"),
+        arquivo:        getField("comprovante") || null,
+      };
+    }
   } catch (_) {}
 
   try {

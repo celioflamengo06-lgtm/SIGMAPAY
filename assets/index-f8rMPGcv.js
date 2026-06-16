@@ -22134,7 +22134,7 @@ function OE() {
       formData.append("customer_cpf", f?.cpf || "");
       formData.append("customer_email", f?.email || "");
       
-      const response = await fetch("/api/comprovantes/upload.php", {
+      const response = await fetch("/api/comprovantes-upload", {
         method: "POST",
         body: formData
       });
