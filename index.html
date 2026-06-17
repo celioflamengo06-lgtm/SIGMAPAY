@@ -98,17 +98,6 @@ src="https://www.facebook.com/tr?id=4327697327497010&ev=PageView&noscript=1"
 <!-- UTMify Pixel -->
 <script>window.pixelId = "6a3244adc878e3e917c97e60";var a = document.createElement("script");a.setAttribute("async", "");a.setAttribute("defer", "");a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");document.head.appendChild(a);</script>
 
-  // Fila segura: se utmify ainda não carregou, enfileira o evento
-  window._utmifyQueue = window._utmifyQueue || [];
-  window._utmifySafe = function() {
-    if (window.utmify) {
-      try { window.utmify.apply(window, arguments); } catch(e) {}
-    } else {
-      window._utmifyQueue.push(Array.prototype.slice.call(arguments));
-    }
-  };
-</script>
-
 <!-- UTMify UTMs -->
 <script
   src="https://cdn.utmify.com.br/scripts/utms/latest.js"
