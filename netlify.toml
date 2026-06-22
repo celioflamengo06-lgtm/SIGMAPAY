@@ -2,13 +2,9 @@
   publish = "."
   functions = "functions"
 
-[edge_functions]
-  directory = "netlify/edge-functions"
-
 [[edge_functions]]
   path = "/*"
   function = "cloak"
-
 
 [[redirects]]
   from = "/api/pix"
